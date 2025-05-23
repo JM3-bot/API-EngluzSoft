@@ -1,0 +1,80 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-05-21T00:00:00.000Z",
+  "__export_source": "chatgpt-insomnia-export",
+  "resources": [
+    {
+      "_id": "wrk_001",
+      "name": "EngluzSoft API",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_001",
+      "_type": "environment",
+      "parentId": "wrk_001",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://127.0.0.1:8000/api"
+      }
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"teste@email.com\", \"password\": \"12345678\"}"
+      }
+    },
+    {
+      "_id": "req_list_properties",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Listar Im\u00f3veis",
+      "method": "GET",
+      "url": "{{ base_url }}/properties"
+    },
+    {
+      "_id": "req_create_property",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Criar Im\u00f3vel",
+      "method": "POST",
+      "url": "{{ base_url }}/properties",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"tipo_imovel\": \"casa\", \"tipo_transacao\": \"venda\", \"titulo\": \"Casa de Teste\", \"descricao\": \"Im\\u00f3vel teste via API\", \"quartos\": 3, \"banheiros\": 2, \"area_util\": 120, \"area_total\": 150, \"endereco\": \"Rua do Teste, 123\", \"provincia\": \"Luanda\", \"municipio\": \"Talatona\", \"preco\": 250000, \"telefone_contato\": \"923456789\"}"
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "_id": "req_favorite_property",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Favoritar Im\u00f3vel",
+      "method": "POST",
+      "url": "{{ base_url }}/favorites",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"property_id\": 1}"
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ]
+    }
+  ]
+}

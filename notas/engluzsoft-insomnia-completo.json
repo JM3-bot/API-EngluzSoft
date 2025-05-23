@@ -1,0 +1,171 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-05-21T00:00:00.000Z",
+  "__export_source": "chatgpt-insomnia-export",
+  "resources": [
+    {
+      "_id": "wrk_001",
+      "name": "EngluzSoft API",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_001",
+      "_type": "environment",
+      "parentId": "wrk_001",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://127.0.0.1:8000/api"
+      }
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"teste@email.com\", \"password\": \"12345678\"}"
+      }
+    },
+    {
+      "_id": "req_list_properties",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Listar Im\u00f3veis",
+      "method": "GET",
+      "url": "{{ base_url }}/properties"
+    },
+    {
+      "_id": "req_create_property",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Criar Im\u00f3vel",
+      "method": "POST",
+      "url": "{{ base_url }}/properties",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"tipo_imovel\": \"casa\", \"tipo_transacao\": \"venda\", \"titulo\": \"Casa de Teste\", \"descricao\": \"Im\\u00f3vel teste via API\", \"quartos\": 3, \"banheiros\": 2, \"area_util\": 120, \"area_total\": 150, \"endereco\": \"Rua do Teste, 123\", \"provincia\": \"Luanda\", \"municipio\": \"Talatona\", \"preco\": 250000, \"telefone_contato\": \"923456789\"}"
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "_id": "req_favorite_property",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Favoritar Im\u00f3vel",
+      "method": "POST",
+      "url": "{{ base_url }}/favorites",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"property_id\": 1}"
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "_id": "req_logout",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Logout",
+      "method": "POST",
+      "url": "{{ base_url }}/logout",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "_id": "req_send_message",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Enviar Mensagem",
+      "method": "POST",
+      "url": "{{ base_url }}/messages",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"sender_id\": 1, \"receiver_id\": 2, \"property_id\": 1, \"conteudo\": \"Ol\\u00e1, estou interessado no im\\u00f3vel.\"}"
+      }
+    },
+    {
+      "_id": "req_schedule_visit",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Agendar Visita",
+      "method": "POST",
+      "url": "{{ base_url }}/visits",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"property_id\": 1, \"data_hora\": \"2025-06-01 14:00:00\", \"status\": \"pendente\"}"
+      }
+    },
+    {
+      "_id": "req_send_review",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Enviar Avalia\u00e7\u00e3o",
+      "method": "POST",
+      "url": "{{ base_url }}/reviews",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"user_id\": 1, \"property_id\": 1, \"nota\": 5, \"comentario\": \"Im\\u00f3vel excelente!\"}"
+      }
+    },
+    {
+      "_id": "req_track_view",
+      "_type": "request",
+      "parentId": "wrk_001",
+      "name": "Registrar Visualiza\u00e7\u00e3o",
+      "method": "POST",
+      "url": "{{ base_url }}/views",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ token }}",
+          "disabled": false
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"property_id\": 1}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[90m= [39m[34;4mApp\Models\Imovel[39;24m {#5218
+    [34mid[39m: [35m1[39m,
+    [34muser_id[39m: [35m2[39m,
+    [34mtipo_imovel[39m: "[32mcasa[39m",
+    [34mtipo_transacao[39m: "[32mvenda[39m",
+    [34mtitulo[39m: "[32mImóvel 1[39m",
+    [34mdescricao[39m: "[32mEt sapiente quisquam qui tempora ut nesciunt.[39m",
+    [34mquartos[39m: [35m1[39m,
+    [34mbanheiros[39m: [35m1[39m,
+    [34marea_util[39m: [33m73.04[39m,
+    [34marea_total[39m: [33m139.42[39m,
+    [34mendereco[39m: "[32m83033 Maymie Vista[39m",
+    [34mprovincia[39m: "[32mWisconsin[39m",
+    [34mmunicipio[39m: "[32mKeegantown[39m",
+    [34mpreco[39m: [33m297740.45[39m,
+    [34mtelefone_contato[39m: "[32m+1-283-867-0844[39m",
+    [34mlatitude[39m: [33m-44.309326[39m,
+    [34mlongitude[39m: [33m-26.576984[39m,
+    [34mcreated_at[39m: "[32m2025-05-12 18:42:21[39m",
+    [34mupdated_at[39m: "[32m2025-05-12 18:42:21[39m",
+  }
+
