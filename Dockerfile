@@ -20,7 +20,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Configurar diretório de trabalho
 WORKDIR /var/www/html
 
-# Copiar arquivos do projeto
+# Copiar arquivos do projeto (ignorando o que está no .dockerignore)
 COPY . .
 
 # Instalar dependências do Composer
