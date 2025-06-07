@@ -5,54 +5,34 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app
-    restart: unless-stopped
-    working_dir: /var/www/html
-    volumes:
-      - .:/var/www/html
+    ports:
+      - "8000:$PORT"
     environment:
+      - DB_CONNECTION=mysql
       - DB_HOST=mysql
       - DB_PORT=3306
+      - DB_DATABASE=db_engluzsoft
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
     depends_on:
       - mysql
-    networks:
-      - laravel_network
+    volumes:
+      - .:/var/www/html
 
   mysql:
     image: mysql:8.0
-    container_name: laravel_mysql
-    restart: unless-stopped
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel_user
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: root_secret
-    volumes:
-      - mysql_data:/var/lib/mysql
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_engluzsoft
     ports:
       - "3306:3306"
-    networks:
-      - laravel_network
-
-  composer:
-    image: composer:2
-    container_name: laravel_composer
     volumes:
-      - .:/var/www/html
-    working_dir: /var/www/html
-    command: composer install --ignore-platform-reqs
-
-  npm:
-    image: node:18
-    container_name: laravel_npm
-    volumes:
-      - .:/var/www/html
-    working_dir: /var/www/html
-    command: sh -c "npm install && npm run dev"
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
 
 volumes:
   mysql_data:
-
-networks:
-  laravel_network:
-    driver: bridge
